@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+}
+
+fieldset {
+    background-color: rgb(137, 210, 213);
+  }
+
+legend{
+    font-size: xx-large;
+}
