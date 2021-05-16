@@ -24,6 +24,7 @@ app.use(express.static('public'))
 //Sources Referenced: I used this reference for help using the API: https://github.com/RajKKapadia/Google_Translate_Youtube_Demo
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.get('/translate', function (req, res) {
+    
     let word1 = req.query.word1;
     
     // Configuration for the client

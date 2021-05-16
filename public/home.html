@@ -9,30 +9,26 @@
   <body>
 
   <h1>Text Analytics App</h1>
+  <p style="text-align: center;">App Description: This is a 3 part Text Analytics App. The app offers a way to get sample content, translate text from any language to English, and to count the number of times each word is used.
+    All of these features work independently of each other.
+  </p>
 
 
     <!--GET SAMPLE CONTENT BOX-->
     <div>
     <form>
         <fieldset>
-            <legend>Get Sample Content-->I WILL USE PARTNER SERVICE FOR THIS</legend>
-        <p>Instructions: If you want sample content, enter a word and click submit. Sample Content will be printed to the screen. If you already have content, you can skip this step</p>
+            <legend>Get Sample Content</legend>
+        <p>Instructions: If you want sample content, enter a word and click "Click Here for Sample Output". Sample Content will be printed to the screen. If you already have content, you can skip this step</p>
               <label>Enter a Word: 
                 <input type="text" id="sampleContent_input" size="25" maxlength="75" placeholder="Enter Word">
               </label>
-              <input type="submit" id="sampleContent_submit" />
+              <input type="submit" id="sampleContent_submit" value="Click Here for Sample Output" />
             </br>
           </br>
             </fieldset>
             <br>
             <span>Sample Content Output: </span><span id="sampleContent_Output"></span>
-            <p>Pizza (Italian: [ˈpittsa], Neapolitan: [ˈpittsə]) is a savory dish of Italian origin consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients (such as anchovies, mushrooms, onions, olives, pineapple, meat, etc.), which is then baked at a high temperature, traditionally in a wood-fired oven.[1] A small pizza is sometimes called a pizzetta. A person who makes pizza is known as a pizzaiolo.
-
-              In Italy, pizza pizza served in formal settings, such as at a restaurant, is presented unsliced, and is eaten with the use of a knife and fork.[2][3] In casual settings, however, it is cut into wedges to be eaten while held in the hand.
-              
-              The term pizza was first recorded in the 10th century in a Latin manuscript from the Southern Italian town of Gaeta in Lazio, on the border with Campania.[4] Modern pizza was invented in Naples, and the dish and its variants have since become popular in many countries.[5] It has become one of the most popular foods in the world and a common fast food item in Europe and North America, available at pizzerias (restaurants specializing in pizza), restaurants offering Mediterranean cuisine, and via pizza delivery.[5][6] Many companies sell ready-baked frozen pizzas to be reheated in an ordinary home oven.
-              
-              The Associazione Verace Pizza Napoletana (lit. True Neapolitan Pizza Association) is a non-profit organization founded in 1984 with headquarters in Naples that aims to promote traditional Neapolitan pizza.[7] In 2009, upon Italy's request, Neapolitan pizza was registered with the European Union as a Traditional Speciality Guaranteed dish,[8][9] and in 2017 the art of its making was included on UNESCO's list of intangible cultural heritage.[10]</p>
     </form>
     </div>
   </br>
@@ -43,12 +39,12 @@
   <div>
     <form>
         <fieldset>
-            <legend>Translate Text -->I AM USING MY SERVICE FOR THIS</legend>
-        <p>Instructions: If you need to translate your content, enter it in the text box and press submit (currently only offer Spanish to English). If you do not have to translate content, you can skip this step</p>
+            <legend>Translate Text</legend>
+        <p>Instructions: If you need to translate your content to English, enter content (in any language) into the text box and press "Click Here for Translated Text". If you do not have to translate content, you can skip this step</p>
               <label>Enter some Text: 
                 <input type="text" id="translation_input" size="25" maxlength="5000000" placeholder="Translation Text">
               </label>
-              <input type="submit" id="translation_submit" />
+              <input type="submit" id="translation_submit" value="Click Here for Translated Text" />
             </br>
           </br>
             </fieldset>
@@ -65,11 +61,11 @@
     <form>
         <fieldset>
             <legend>Text Analyzer/Word Counter</legend>
-        <p>Instructions: Copy and paste your content into the text box and click submit. The count of each word will be displayed below.</p>
+        <p>Instructions: Copy and paste your content into the text box and press "Click Here for Word Counts". The count of each word will be displayed below.</p>
               <label>Enter Content to Analyze: 
                 <input type="text" id="analyze_input" size="25" maxlength="5000000" placeholder="Analyze Text">
               </label>
-              <input type="submit" id="analyze_submit" />
+              <input type="submit" id="analyze_submit" value="Click Here for Word Counts"/>
             </br>
           </br>
             </fieldset>
