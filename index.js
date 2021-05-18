@@ -10,7 +10,7 @@ require('dotenv').config();
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
 
 app.use(express.json());
-app.set('port', 5465);
+app.set('port', 5456);
 
 //if the client is requesting a static file, that file will be in the public folder
 //if you go to http://flip3.engr.oregonstate.edu:5465/home.html, it will return my home.html file
@@ -24,7 +24,7 @@ app.use(express.static('public'))
 //Sources Referenced: I used this reference for help using the API: https://github.com/RajKKapadia/Google_Translate_Youtube_Demo
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.get('/translate', function (req, res) {
-    
+
     let word1 = req.query.word1;
     
     // Configuration for the client

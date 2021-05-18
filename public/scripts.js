@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //GET ROUTE FOR SAMPLE TEXT: BELOW
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/*
+
 //I WILL SEND A WORD TO WILLS API AND RETURN A PARAGRAPH
 document.getElementById("sampleContent_submit").addEventListener('click', function(event){
 
@@ -11,16 +11,20 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
     var sampleWord = document.getElementById('sampleContent_input').value
 
     //Group member will tell me where to send the word to access the scraper
-    var webLink = "address/translator?q=" + sampleWord;    
+    //var webLink = "address/scraper?word=" + sampleWord;    
   
+    //this is a test weblink
+    var webLink = "http://flip1.engr.oregonstate.edu:3547/scrape?word=Corvette";
+
     //open GET request
     req.open("GET", webLink, true);
-    
+    console.log("translate text sent")
+
     //create an asynchronous call by adding a listener on the request's load event.
     req.addEventListener('load', function() {
         if(req.status >= 200 && req.status < 400) {
             var response = JSON.parse(req.responseText);
-            
+            console.log(response);
             //get variables for output
             var scrapedContent = response;
             document.getElementById('sampleContent_Output').textContent = scrapedContent;
@@ -32,7 +36,7 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
     req.send(null);//this is a get request so you are sending null.   
     event.preventDefault();//
 })
-*/
+
 
 
 
@@ -47,7 +51,7 @@ document.getElementById("translation_submit").addEventListener('click', function
     var word = document.getElementById('translation_input').value
 
     //Create link to be sent in the GET request
-    var webLink = "http://flip3.engr.oregonstate.edu:5465/translate?word1="+word;
+    var webLink = "http://flip3.engr.oregonstate.edu:5456/translate?word1="+word;
 
     //Open GET request
     req.open("GET", webLink, true);
