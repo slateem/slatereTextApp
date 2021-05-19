@@ -14,19 +14,21 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
     //var webLink = "address/scraper?word=" + sampleWord;    
   
     //this is a test weblink
-    var webLink = "http://flip1.engr.oregonstate.edu:3547/scrape?word=Corvette";
+    var scrapeLink = "https://portfive.net/language-game/scrape?word=" + sampleWord;
 
+    console.log(scrapeLink);
     //open GET request
-    req.open("GET", webLink, true);
+    req.open("GET", scrapeLink, true);
     console.log("translate text sent")
 
     //create an asynchronous call by adding a listener on the request's load event.
     req.addEventListener('load', function() {
         if(req.status >= 200 && req.status < 400) {
-            var response = JSON.parse(req.responseText);
-            console.log(response);
+            console.log(req.response)
+            //var response = JSON.parse(req.responseText);
+            //console.log(response);
             //get variables for output
-            var scrapedContent = response;
+            var scrapedContent = req.response;
             document.getElementById('sampleContent_Output').textContent = scrapedContent;
 
             } else {
@@ -52,6 +54,7 @@ document.getElementById("translation_submit").addEventListener('click', function
 
     //Create link to be sent in the GET request
     var webLink = "http://flip3.engr.oregonstate.edu:5456/translate?word1="+word;
+
 
     //Open GET request
     req.open("GET", webLink, true);
