@@ -8,10 +8,13 @@
   </head>
   <body>
 
-  <h1>Text Analytics App</h1>
-  <p style="text-align: center;">App Description: This is a 3 part Text Analytics App. The app offers a way to get sample content, translate text from any language to English, and to count the number of times each word is used.
+  <div class="headerDiv"></br>
+  <h1>Text Analytics App</h1></br>
+  </div>
+
+  <h3 style="text-align: center;">App Description: This is a 3 part Text Analytics App. The app offers a way to get sample content, translate text from any language to English, and to count the number of times each word is used.
     All of these features work independently of each other.
-  </p>
+  </h3>
 
 
     <!--GET SAMPLE CONTENT BOX-->
@@ -19,7 +22,8 @@
     <form>
         <fieldset>
             <legend>Get Sample Content (Uses Teamate's scraper services)</legend>
-        <p>Instructions: If you want sample content, enter a word and click "Click Here for Sample Output". Sample Content will be printed to the screen. If you already have content, you can skip this step</p>
+        <p>Instructions: If you want sample content, enter a word and click "Click Here for Sample Output". Sample Content will be printed to the screen. <u>If you already have content, you can skip this step</u></p>
+        <p>Benefits & Costs: The section allows you to easily get sample content to test in the word count section below. However this content is only useful for testing, for more relevant content you should provide your own. </p>
               <label>Enter a Word: 
                 <input type="text" id="sampleContent_input" size="25" maxlength="75" placeholder="Enter Word">
               </label>
@@ -40,7 +44,8 @@
     <form>
         <fieldset>
             <legend>Translate Text (Uses my transformation service)</legend>
-        <p>Instructions: If you need to translate your content to English, enter content (in any language) into the text box and press "Click Here for Translated Text". If you do not have to translate content, you can skip this step</p>
+        <p>Instructions: If you need to translate your content to English, enter content (in any language) into the text box and press "Click Here for Translated Text". <u>If you already have content, you can skip this step</u></p>
+        <p>Benefits & Costs: If you have content in any language we can translate it to english for you so you can analyze the english content below. However there is always a risk that meaning is lost in translation.</p>
               <label>Enter some Text: 
                 <input type="text" id="translation_input" size="25" maxlength="5000000" placeholder="Translation Text">
               </label>
@@ -62,6 +67,7 @@
         <fieldset>
             <legend>Text Analyzer/Word Counter</legend>
         <p>Instructions: Copy and paste your content into the text box and press "Click Here for Word Counts". The count of each word will be displayed below.</p>
+        <p>Benefits & Costs: The benefit of a word counter is that you can see what the most common words are in an article allowing you to gain understanding without having to read it all. However, there are many common words (like "the") that do not provide meaning even though they have high word counts.</p>
               <label>Enter Content to Analyze: 
                 <input type="text" id="analyze_input" size="25" maxlength="5000000" placeholder="Analyze Text">
               </label>

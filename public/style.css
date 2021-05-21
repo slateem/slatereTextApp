@@ -2,9 +2,12 @@ h1 {
     text-align: center;
 }
 
+.headerDiv{
+    background-color: rgb(158, 158, 158)
+}
 
 fieldset {
-    background-color: rgb(137, 210, 213);
+    background-color: rgb(163, 229, 231);
   }
 
 legend{
