@@ -32,7 +32,9 @@
           </br>
             </fieldset>
             <br>
-            <span>Sample Content Output: </span><span id="sampleContent_Output"></span>
+            <span>Sample Content Output: </span><span id="sampleContent_Output"></span></br>
+          </br>
+            <span>Words Used: </span><span id="wordsUsed_Output"></span>
     </form>
     </div>
   </br>
@@ -71,7 +73,7 @@
               <label>Enter Content to Analyze: 
                 <input type="text" id="analyze_input" size="25" maxlength="5000000" placeholder="Analyze Text">
               </label>
-              <input type="submit" id="analyze_submit" value="Click Here for Word Counts"/>
+              <input type="submit" onclick="return confirm('Are you Sure?--Remember to copy any data you want below first')" id="analyze_submit" value="Click Here for Word Counts"/>
             </br>
           </br>
             </fieldset>

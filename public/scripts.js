@@ -2,6 +2,8 @@
 //GET ROUTE FOR SAMPLE TEXT: BELOW
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+var wordsUsed = [];
+
 //I WILL SEND A WORD TO WILLS API AND RETURN A PARAGRAPH
 document.getElementById("sampleContent_submit").addEventListener('click', function(event){
 
@@ -9,6 +11,9 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
     
     //get the word to be sent to the scraping api
     var sampleWord = document.getElementById('sampleContent_input').value
+
+    //push word used to wordsUsed array
+    wordsUsed.push(sampleWord);
 
     //Group member will tell me where to send the word to access the scraper
     //var webLink = "address/scraper?word=" + sampleWord;    
@@ -30,6 +35,7 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
             //get variables for output
             var scrapedContent = req.response;
             document.getElementById('sampleContent_Output').textContent = scrapedContent;
+            document.getElementById('wordsUsed_Output').textContent = wordsUsed;
 
             } else {
                 console.log("Error in network request: " + req.statusText);
@@ -144,3 +150,6 @@ document.body.appendChild(table).setAttribute("id", "tableID");;
    
 })
 
+window.onpopstate = function (e) {
+    console.log("pop")
+}
