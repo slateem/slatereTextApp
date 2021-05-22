@@ -2,7 +2,7 @@
 //GET ROUTE FOR SAMPLE TEXT: BELOW
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-var wordsUsed = [];
+var wordsUsed = [];//used to output words user used
 
 //I WILL SEND A WORD TO WILLS API AND RETURN A PARAGRAPH
 document.getElementById("sampleContent_submit").addEventListener('click', function(event){
@@ -59,7 +59,7 @@ document.getElementById("translation_submit").addEventListener('click', function
     var word = document.getElementById('translation_input').value
 
     //Create link to be sent in the GET request
-    var webLink = "http://flip3.engr.oregonstate.edu:5456/translate?word1="+word;
+    var webLink = "https://portfive.net/text_app/translate?word1="+word;
 
 
     //Open GET request
@@ -98,7 +98,7 @@ document.getElementById("analyze_submit").addEventListener('click', function(eve
     console.log(get_words);//console log for testing
 
     //replace the periods, commas, and parenthasis, etc...and then split the string on whitespace. Words will be a list of words.
-    var words = get_words.replace(/[.]/g, '').replace(/[,]/g, '').replace(/[(]/g, '').replace(/[)]/g, '').replace(/[:]/g, '').replace(/[']/g, '').split(/\s+/);
+    var words = get_words.replace(/[.]/g, '').replace(/[;]/g, '').replace(/[#]/g, '').replace(/[0-9]/g, '').replace(/[&]/g, '').replace(/[,]/g, '').replace(/[(]/g, '').replace(/[)]/g, '').replace(/[:]/g, '').replace(/[']/g, '').split(/\s+/);
     console.log(words)
 
     var wordCount = {};//object for word counts
@@ -150,6 +150,3 @@ document.body.appendChild(table).setAttribute("id", "tableID");;
    
 })
 
-window.onpopstate = function (e) {
-    console.log("pop")
-}
