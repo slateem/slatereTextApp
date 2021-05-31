@@ -1,10 +1,7 @@
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Function to send word to scraper API and return content
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 var wordsUsed = [];//used to output words user used
- 
+
+//function for getting the content to be sent to teamates scraper service------------------------------------------------------------------------------------------------ 
 document.getElementById("sampleContent_submit").addEventListener('click', function(event){
 
     //get the word to be sent to the scraping api
@@ -22,7 +19,9 @@ document.getElementById("sampleContent_submit").addEventListener('click', functi
 })
 
 
-//function for the GET request and response
+
+
+//function for sending the GET request to the scraper service------------------------------------------------------------------------------------------------ 
 function sendWordGetContent(linkToSend){
 
     var req = new XMLHttpRequest();
@@ -47,14 +46,12 @@ function sendWordGetContent(linkToSend){
 
     req.send(null);//this is a get request so you are sending null.   
     event.preventDefault();
-
 }
 
 
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Translator: Gets the text inputted into the form, and sends it to my translator in the index.js file via a GET request. 
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Translator: Gets the text inputted into the form, and sends it to my translator in the index.js file via a GET request.------------------------------------------------------ 
 document.getElementById("translation_submit").addEventListener('click', function(event){
 
     var req = new XMLHttpRequest();
@@ -65,8 +62,6 @@ document.getElementById("translation_submit").addEventListener('click', function
     //Create link to be sent in the GET request
     var webLink = "https://portfive.net/text_app/translate?word1="+word;
 
-
-    //Open GET request
     req.open("GET", webLink, true);
     
     //Create an asynchronous call by adding a listener on the request's load event.
@@ -91,41 +86,18 @@ document.getElementById("translation_submit").addEventListener('click', function
 
 
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Word Counter: Sums up the count of each word in content it is passed. 
+//Word Counter: Sums up the count of each word in content it is passed. ---------------------------------------------------------------------------------------------------------
 //Sources referenced: https://stackoverflow.com/questions/30906807/word-frequency-in-javascript
 //Sources reference for replacing words: https://stackoverflow.com/questions/9792927/javascript-array-search-and-remove-string
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 document.getElementById("analyze_submit").addEventListener('click', function(event) {
 
-    var result = {}; //words and word counts will be added here
-    var getWords = document.getElementById("analyze_input").value; //get the string of words to count
-    console.log(getWords);//console log for testing
-
+    var getWords = document.getElementById("analyze_input").value; 
     getWords= getWords.toLowerCase();
 
-    //replace the periods, commas, and parenthasis, etc...and then split the string on whitespace. Words will be a list of words.
+    //replace the periods, commas, and parenthasis, etc.
     var words = getWords.replace(/[.;#0123456789&,():']/g, '').split(/\s+/);
-
-    //function to delete unimportant words 
-    words = words.filter(wordsToKeep => wordsToKeep != 'a');
-    words = words.filter(wordsToKeep => wordsToKeep != 'an');
-    words = words.filter(wordsToKeep => wordsToKeep != 'the');
-    words = words.filter(wordsToKeep => wordsToKeep != 'is');
-    words = words.filter(wordsToKeep => wordsToKeep != 'this');
-    words = words.filter(wordsToKeep => wordsToKeep != 'and');
-    words = words.filter(wordsToKeep => wordsToKeep != 'as');
-    words = words.filter(wordsToKeep => wordsToKeep != 'of');
-    words = words.filter(wordsToKeep => wordsToKeep != 'than');
-    words = words.filter(wordsToKeep => wordsToKeep != 'then');
-    words = words.filter(wordsToKeep => wordsToKeep != 'to');
-    words = words.filter(wordsToKeep => wordsToKeep != 'by');
-    words = words.filter(wordsToKeep => wordsToKeep != 'in');
-    words = words.filter(wordsToKeep => wordsToKeep != 'what');
-
-    console.log(typeof(words));
-    console.log(words)
-
+    words = wordCleaner(words);
+   
     var wordCount = {};
 
     //for each word, see if it exists in wordCount, if it does, increment it, if it does not then add it to the object
@@ -137,18 +109,43 @@ document.getElementById("analyze_submit").addEventListener('click', function(eve
     });
     event.preventDefault();
     
-    console.log(wordCount);//console log for testing
+    tableCreator(wordCount);
+})
 
-    console.log(Object.keys(wordCount).length);//gets the length of the array
 
-  
+
+//function to add a border to content table---------------------------------------------------------------------------------------------------------------------------------------
+function addBorder(listToAddBorders){
+
+    for(var x=0; x<listToAddBorders.length; x++)
+        listToAddBorders[x].style.border = "thin solid #000000";
+}
+
+
+
+
+//function for dropping unimportant words-------------------------------------------------------------------------------------------------------------------
+function wordCleaner(listToClean){
+     
+     wordsToDrop = ['a','an','the','is','this','and','as','of'
+                    ,'than','then','to','by','in','what'];
+     
+     for (var i = 0; i< wordsToDrop.length; i++){
+         listToClean = listToClean.filter(listToClean => listToClean != wordsToDrop[i]);
+     }
+
+    return listToClean;
+}
+
+
+
+//create table function------------------------------------------------------------------------------------------------------------------------------------------
+function tableCreator(wordCount){
     //Create a table with the word counts (Remove old table if it exsists)
-     if (document.contains(document.getElementById("tableID"))){
+    if (document.contains(document.getElementById("tableID"))){
         document.getElementById("tableID").remove();
     }
 
-
-    //create a table object
     var table = document.createElement('table');
 
     for (let word in wordCount){
@@ -173,11 +170,4 @@ document.getElementById("analyze_submit").addEventListener('click', function(eve
         table.appendChild(tr);
 }
 document.body.appendChild(table).setAttribute("id", "tableID");;
-   
-})
-
-function addBorder(listToAddBorders){
-
-    for(var x=0; x<listToAddBorders.length; x++)
-        listToAddBorders[x].style.border = "thin solid #000000";
 }

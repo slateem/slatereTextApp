@@ -10,7 +10,7 @@ require('dotenv').config();
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
 
 app.use(express.json());
-app.set('port', 5456);
+app.set('port', 4558);
 
 //if the client is requesting a static file, that file will be in the public folder
 //if you go to http://flip3.engr.oregonstate.edu:5465/home.html, it will return my home.html file
@@ -26,18 +26,19 @@ app.use(express.static('public'))
 app.get('/translate', function (req, res) {
 
     let word1 = req.query.word1;
-    
+
     // Configuration for the client
     const translate = new Translate({
-        credentials: CREDENTIALS,
-        projectId: CREDENTIALS.project_id   
+    credentials: CREDENTIALS,
+    projectId: CREDENTIALS.project_id   
     });
 
-    //function to send the text and target language to the translator
+//function to send the text and target language to the translator
     const translateText = async (text, targetLanguage) => {
-        let [response] = await translate.translate(text, targetLanguage);
-        return response;
+    let [response] = await translate.translate(text, targetLanguage);
+    return response;
     };
+
     
     //get translated content as a response and send back to users GET request
     translateText(word1, 'en')
