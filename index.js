@@ -13,7 +13,7 @@ app.use(express.json());
 app.set('port', 4558);
 
 //if the client is requesting a static file, that file will be in the public folder
-//if you go to http://flip3.engr.oregonstate.edu:5465/home.html, it will return my home.html file
+//if you go to http://flip3.engr.oregonstate.edu:4558/home.html, it will return my home.html file
 app.use(express.static('public'))
 
 
@@ -33,7 +33,7 @@ app.get('/translate', function (req, res) {
     projectId: CREDENTIALS.project_id   
     });
 
-//function to send the text and target language to the translator
+    //function to send the text and target language to the translator
     const translateText = async (text, targetLanguage) => {
     let [response] = await translate.translate(text, targetLanguage);
     return response;
