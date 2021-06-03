@@ -95,6 +95,31 @@ document.getElementById("analyze_submit").addEventListener('click', function(eve
     getWords= getWords.toLowerCase();
 
     //replace the periods, commas, and parenthasis, etc.
+    //var words = getWords.replace(/[.;#0123456789&,():']/g, '').split(/\s+/);
+    var words = getWords.split(/\s+/);
+    //words = wordCleaner(words);
+   
+    var wordCount = {};
+
+    //for each word, see if it exists in wordCount, if it does, increment it, if it does not then add it to the object
+    words.forEach(function(wordInList) {
+        if (!wordCount[wordInList]) {
+            wordCount[wordInList] = 0;
+        }
+        wordCount[wordInList] += 1;
+    });
+    event.preventDefault();
+    
+    tableCreator(wordCount);
+})
+
+//NEW WORD COUNTER --- USES MY CLEANING FUNCTIONALITY
+document.getElementById("analyze_submit_clean").addEventListener('click', function(event) {
+
+    var getWords = document.getElementById("analyze_input").value; 
+    getWords= getWords.toLowerCase();
+
+    //replace the periods, commas, and parenthasis, etc.
     var words = getWords.replace(/[.;#0123456789&,():']/g, '').split(/\s+/);
     words = wordCleaner(words);
    
@@ -112,8 +137,6 @@ document.getElementById("analyze_submit").addEventListener('click', function(eve
     tableCreator(wordCount);
 })
 
-
-
 //function to add a border to content table---------------------------------------------------------------------------------------------------------------------------------------
 function addBorder(listToAddBorders){
 
@@ -128,7 +151,7 @@ function addBorder(listToAddBorders){
 function wordCleaner(listToClean){
      
      wordsToDrop = ['a','an','the','is','this','and','as','of'
-                    ,'than','then','to','by','in','what'];
+                    ,'than','then','to','by','in','what', 'other', 'on', 'are', 'or', 'that', 'also', 'for'];
      
      for (var i = 0; i< wordsToDrop.length; i++){
          listToClean = listToClean.filter(listToClean => listToClean != wordsToDrop[i]);
